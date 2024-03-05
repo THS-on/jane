@@ -1,6 +1,6 @@
-# A10 - Nokia Attestation Engine
+# JANE - Attestation Engine
 
-This is the source for the Nokia Attestation Engine A10.
+This is the source for the Jyväskylä AttestatioN Engine, a fork and rewrite of the former A10 Nokia Attestation Engine.
 
 This software is used as the remote attestation engine as part of a trusted and/or confidential computing environment. This is the system that holds the known good values about devices and other elements, and provides the attestation and validation mechanisms.
 
