@@ -14,7 +14,7 @@
 
 ## Structures
 
-   * Elements
+   * [Elements](elements.md)
    * Policies
    * Expected Values
    * Claims
