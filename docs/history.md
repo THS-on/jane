@@ -2,7 +2,7 @@
 
 The attestation engine has a long an varied history
 
-## A1,A2 and A3
+## A1,A2 and A3 ( 2015- )
 
 Early experiments, circle late 2014, early 2015. Written in Javascript with lots of pain regarding reactive, functional programming
 
@@ -30,8 +30,12 @@ Was an experiment to use the ELKS analytics stack and the ELKS UI. Was demonstra
 
 A much more compliant with IEFT RATS in its data structures. Has a proper protocol backend which takes care of layer 7 and layer 6 of the attestation protocols so we can theoretically support any RoT/auditing system, eg: HSM, UEFI, TPM2.0, TPM1.2 etc, we can even integrate with other attestation engines' trust agents such as KeyLime, OpenAttestation, Go-Attestation etc. Libraries are much better written with a much more consistent API. UI and interfaces are separate components built on top of libraries. The whole thing is designed to integrate with MQTT, logstash, ELKS, whatever AI/ML analytics and the forensics system that is currently under development. Lots of cool features. Supports the notion of *attestation applications*</em>* for extensibility making integration with other systems such as Edge/NFV MANO very quick and easy.
 
-## GA10
+## GA10 (- February 2024)
 
-Even more compliant with IEFT RATS in its data structures and an improved protocol backend which takes care of layer 7 and layer 6 of the attestation protocols. All the cool stuff of A10 but now written in *Go*. Seriously strong typing is so important....Reworked UI, reworked REST API and reworked data structures. Oh so much better. AND, Go has a really nice cross compiler: arm, arm64, i386, amd64, ppc, and then Linux, Windows, Solaris, AIX and Plan 9 from Bell Labs. Also Go makes self-contained binaries so the trust agent is a single binary which makes distribution trivial and the whole server engine itself just needs the binary and the config file :-)  
+Even more compliant with IEFT RATS in its data structures and an improved protocol backend which takes care of layer 7 and layer 6 of the attestation protocols. All the cool stuff of A10 but now written in *Go*. Seriously strong typing is so important....Reworked UI, reworked REST API and reworked data structures. Oh so much better. AND, Go has a really nice cross compiler: arm, arm64, i386, amd64, ppc, and then Linux, Windows, Solaris, AIX and Plan 9 from Bell Labs. Also Go makes self-contained binaries so the trust agent is a single binary which makes distribution trivial and the whole server engine itself just needs the binary and the config file :-)  Includes rules for working with confidential computing structures too.
 
-Includes rules for working with confidential computing structures too.
+## Jane
+
+NAE/GA10 development stops at Nokia (February 2024) and the code is transferred to Jyvaskyla University and now continues as JANE ... the current version is being updated to support container attestation with in-toto and further confidential computing integration.
+
+Jane => Jyäskylä AttestatioN Engine
