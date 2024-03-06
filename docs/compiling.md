@@ -17,19 +17,19 @@ wget https://github.com/edgelesssys/edgelessrt/releases/download/v0.4.1/edgeless
 apt-get install -y ./$ERT_DEB build-essential cmake libssl-dev libsgx-dcap-default-qpl libsgx-dcap-ql libsgx-dcap-quote-verify
 ```
 
-## Compiling GA10
+## Compiling JANESERVER
 
-Compilation requires an up-to-date mod file and the Edgeless environment variables - which should be installed if the above went correctly. *MAKE SURE* you are in the `ga10` directory when you run these commands:
+Compilation requires an up-to-date mod file and the Edgeless environment variables - which should be installed if the above went correctly. *MAKE SURE* you are in the `janeserver` directory when you run these commands:
 
 ```bash
 go get -u
 go mod tidy
-. /opt/edgelessrt/share/openenclave/openenclaverc && GOOS=linux GOARCH=amd64 go build -o ga10
+. /opt/edgelessrt/share/openenclave/openenclaverc && GOOS=linux GOARCH=amd64 go build -o janeserver
 ```
 
-You will now get a file called `ga10` which is your executable.
+You will now get a file called `janeserver` which is your executable.
 
-If you wish to reduce the size of the binary, run `strip ga10`
+If you wish to reduce the size of the binary, run `strip janeserver`
 
 ## Compiling TA10
 
