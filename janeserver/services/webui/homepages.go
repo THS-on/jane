@@ -30,7 +30,7 @@ func homepage(c echo.Context) error {
 	var hps homepagestructure
 
 	es,_ := operations.GetElements()
-	ps,_ := operations.GetPolicies()
+	ps,_ := operations.GetIntents()
 	evs,_ := operations.GetExpectedValues()
 	cs,_ := operations.GetClaims()
 	rs,_ := operations.GetResults()

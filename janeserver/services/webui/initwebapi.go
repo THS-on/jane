@@ -49,7 +49,7 @@ func StartWebUI() {
 	templates["about.html"] = template.Must(template.ParseFS(WPFS, T+"about.html", T+"base.html"))
 
 	templates["elements.html"] = template.Must(template.ParseFS(WPFS, T+"elements.html", T+"elementsummarylist.html", T+"base.html"))
-	templates["policies.html"] = template.Must(template.ParseFS(WPFS, T+"policies.html", T+"policysummarylist.html", T+"base.html"))
+	templates["intents.html"] = template.Must(template.ParseFS(WPFS, T+"intents.html", T+"intentsummarylist.html", T+"base.html"))
 	templates["evs.html"] = template.Must(template.ParseFS(WPFS, T+"evs.html", T+"evsummarylist.html", T+"base.html"))
 
 	templates["element.html"] = template.Must(template.New("element.html").Funcs(functions).ParseFS(WPFS, T+"element.html", T+"base.html",
@@ -61,7 +61,7 @@ func StartWebUI() {
 		T+"hostinformation.html",
 		T+"resultvalue.html"))
 
-	templates["policy.html"] = template.Must(template.ParseFS(WPFS, T+"policy.html", T+"base.html",
+	templates["intent.html"] = template.Must(template.ParseFS(WPFS, T+"intent.html", T+"base.html",
 		T+"genericList.html"))
 	templates["ev.html"] = template.Must(template.ParseFS(WPFS, T+"ev.html", T+"base.html",
 		T+"genericList.html"))
@@ -93,7 +93,7 @@ func StartWebUI() {
 	templates["opaqueobject.html"] = template.Must(template.ParseFS(WPFS, T+"opaqueobject.html", T+"base.html"))
 
 	templates["editelement.html"] = template.Must(template.New("editelement.html").Funcs(functions).ParseFS(WPFS, T+"editelement.html", T+"base.html"))
-	templates["editpolicy.html"] = template.Must(template.New("editpolicy.html").Funcs(functions).ParseFS(WPFS, T+"editpolicy.html", T+"base.html"))
+	templates["editintent.html"] = template.Must(template.New("editintent.html").Funcs(functions).ParseFS(WPFS, T+"editintent.html", T+"base.html"))
 	templates["editexpectedvalue.html"] = template.Must(template.ParseFS(WPFS, T+"editexpectedvalue.html", T+"base.html"))
 
 	// Create the router
@@ -135,8 +135,8 @@ func setupEditEndpoints(router *echo.Echo) {
 	router.GET(PREFIX+"/new/element", newElement)
 	router.POST(PREFIX+"/new/element", processNewElement)
 
-	router.GET(PREFIX+"/new/policy", newPolicy)
-	router.POST(PREFIX+"/new/policy", processNewPolicy)
+	router.GET(PREFIX+"/new/intent", newIntent)
+	router.POST(PREFIX+"/new/intent", processNewIntent)
 
 	router.GET(PREFIX+"/new/expectedvalue", newExpectedValue)
 
@@ -151,8 +151,8 @@ func setupHomeEndpoints(router *echo.Echo) {
 func setUpDisplayEndpoints(router *echo.Echo) {
 	router.GET(PREFIX+"/elements", showElements)
 	router.GET(PREFIX+"/element/:itemid", showElement)
-	router.GET(PREFIX+"/policies", showPolicies)
-	router.GET(PREFIX+"/policy/:itemid", showPolicy)
+	router.GET(PREFIX+"/intents", showIntents)
+	router.GET(PREFIX+"/intent/:itemid", showIntent)
 	router.GET(PREFIX+"/expectedvalues", showExpectedValues)
 	router.GET(PREFIX+"/expectedvalue/:itemid", showExpectedValue)
 

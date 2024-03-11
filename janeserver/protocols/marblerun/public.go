@@ -25,7 +25,7 @@ func Registration() structures.Protocol {
 	return structures.Protocol{"A10MARBLERUNPROTOCOL", "Protocol to generate quote from MarbleRun", Call, intents}
 }
 
-func Call(e structures.Element, p structures.Policy, s structures.Session, aps map[string]interface{}) (map[string]interface{}, map[string]interface{}, string) {
+func Call(e structures.Element, p structures.Intent, s structures.Session, aps map[string]interface{}) (map[string]interface{}, map[string]interface{}, string) {
 	rtn, cps, err := requestFromMarbleRun(e, p, s, aps)
 
 	if err != nil {
@@ -33,7 +33,7 @@ func Call(e structures.Element, p structures.Policy, s structures.Session, aps m
 
 		return rtn, cps, structures.CLAIMERROR
 	} else {
-		return rtn, cps, p.Intent
+		return rtn, cps, p.Function
 	}
 }
 
@@ -74,29 +74,29 @@ func coordinatorTLSConfig(certs []string) (*tls.Config, error) {
 	return &conf, nil
 }
 
-func requestFromMarbleRun(e structures.Element, p structures.Policy, s structures.Session, cps map[string]interface{}) (map[string]interface{}, map[string]interface{}, error) {
+func requestFromMarbleRun(e structures.Element, p structures.Intent, s structures.Session, cps map[string]interface{}) (map[string]interface{}, map[string]interface{}, error) {
 	var empty map[string]interface{} = make(map[string]interface{}) // this is an  *instantiated* empty map used for error situations
 	var bodymap map[string]interface{}                              // this is used to store the result of the final unmarshalling  of the body received from the TA
 
-	if p.Intent == null {
+	if p.Function == null {
 		return empty, cps, nil
 	}
 
 	suffix := ""
-	if p.Intent == quoteIntent {
+	if p.Function == quoteIntent {
 		suffix = "quote"
-	} else if p.Intent == updateLogIntent {
+	} else if p.Function == updateLogIntent {
 		suffix = "update"
-	} else if p.Intent == manifestIntent {
+	} else if p.Function == manifestIntent {
 		suffix = "manifest"
 	} else {
-		return empty, nil, fmt.Errorf("intent not supported %s", p.Intent)
+		return empty, nil, fmt.Errorf("intent not supported %s", p.Function)
 	}
 
 	url := e.Endpoint + "/" + suffix
 	var tr http.Transport
 	// If we don't have setup any certs and are doing a quote ignore the TLS config for now
-	if p.Intent == quoteIntent && len(e.MRCoordinator.Certs) == 0 {
+	if p.Function == quoteIntent && len(e.MRCoordinator.Certs) == 0 {
 		tr = http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		}

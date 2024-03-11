@@ -15,7 +15,7 @@ import(
 type evstruct struct {
 	EV    structures.ExpectedValue
 	E     structures.Element
-	P     structures.Policy
+	I     structures.Intent
 }
 
 func showExpectedValues(c echo.Context) error {
@@ -26,8 +26,8 @@ func showExpectedValues(c echo.Context) error {
 
 	for _,j := range es {
 		e,_ := operations.GetElementByItemID(j.ElementID)
-		p,_ := operations.GetPolicyByItemID(j.PolicyID)		
-		evs = append( evs, evstruct{j,e,p} )
+		i,_ := operations.GetIntentByItemID(j.IntentID)		
+		evs = append( evs, evstruct{j,e,i} )
 	}
 
 
@@ -40,7 +40,7 @@ func showExpectedValue(c echo.Context) error {
 	ev,_ := operations.GetExpectedValueByItemID(c.Param("itemid"))
 	
 	e,_ := operations.GetElementByItemID(ev.ElementID)
-	p,_ := operations.GetPolicyByItemID(ev.PolicyID)
+	p,_ := operations.GetIntentByItemID(ev.IntentID)
 
 	evstr := 	evstruct{ ev,e,p}	
 	return c.Render(http.StatusOK, "ev.html",evstr)

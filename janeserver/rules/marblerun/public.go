@@ -313,7 +313,7 @@ type RequestData struct {
 func ValidateMarbleInstance(claim structures.Claim, rule string, _ structures.ExpectedValue, session structures.Session, parameter map[string]interface{}) (structures.ResultValue, string, error) {
 	element := claim.Header.Element
 
-	coordinatorIDRaw, ok := claim.Header.Policy.Parameters["coordinatorID"]
+	coordinatorIDRaw, ok := claim.Header.Intent.Parameters["coordinatorID"]
 	if !ok {
 		return structures.RuleCallFailure, "coordinator id is missing a a parameter", nil
 	}

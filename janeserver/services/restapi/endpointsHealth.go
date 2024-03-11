@@ -47,7 +47,7 @@ func objectCount() counts {
 
 	np := func() int64 {
 		defer wg.Done()
-		return operations.CountPolicies()
+		return operations.CountIntents()
 	}()
 
 	nev := func() int64 {

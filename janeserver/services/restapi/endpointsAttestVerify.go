@@ -51,9 +51,9 @@ func postAttest(c echo.Context) error {
 		fmt.Errorf("Element not found: %v", err)
 	}
 
-	policy, err := operations.GetPolicyByItemID(pid)
+	intent, err := operations.GetIntentByItemID(pid)
 	if err != nil {
-		fmt.Errorf("Policy not found: %v", err)
+		fmt.Errorf("Intent not found: %v", err)
 	}
 
 	session, err := operations.GetSessionByItemID(sid)
@@ -61,7 +61,7 @@ func postAttest(c echo.Context) error {
 		fmt.Errorf("Session not found: %v", err)
 	}
 
-	res, err := operations.Attest(element, policy, session, (*att).Parameters)
+	res, err := operations.Attest(element, intent, session, (*att).Parameters)
 
 	if err != nil {
 		response := postAttestReturn{res, err.Error()}

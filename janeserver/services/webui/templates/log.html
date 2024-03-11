@@ -29,8 +29,8 @@
 <td>
   {{ if eq .RefType "element" }}
      <a href="/element/{{ .RefID }}">element</a>
-  {{ else if eq .RefType "policy" }}
-     <a href="/policy/{{ .RefID }}">policy</a>
+  {{ else if eq .RefType "intent" }}
+     <a href="/intent/{{ .RefID }}">intent</a>
   {{ else if eq .RefType "expectedvalue" }}
      <a href="/expectedvalue/{{ .RefID }}">expectedvalue</a>
   {{ else if eq .RefType "claim" }}
