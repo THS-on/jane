@@ -10,13 +10,13 @@ import(
 	"github.com/labstack/echo/v4"
 )
 
-type returnPolicies struct {
-	Policies  []string  `json:"policies"`
+type returnIntents struct {
+	Intents  []string  `json:"intents"`
 	Length    int       `json:"length"`
 }
 
-func getPolicies(c echo.Context) error {
-	elems,err := operations.GetPolicies()
+func getIntents(c echo.Context) error {
+	elems,err := operations.GetIntents()
 
 	log.Println("ps=",elems)
 
@@ -32,16 +32,16 @@ func getPolicies(c echo.Context) error {
 		}
 
 		//Marshall into JSON
-		elems_struct := returnPolicies{ elems_str, len(elems_str) }
+		elems_struct := returnIntents{ elems_str, len(elems_str) }
 	
 		return c.JSON(http.StatusOK, elems_struct)
 	}
 }
 
-func getPolicy (c echo.Context) error {
+func getIntent(c echo.Context) error {
 	itemid := c.Param("itemid")
 
-	elem,err := operations.GetPolicyByItemID(itemid)
+	elem,err := operations.GetIntentByItemID(itemid)
 
 	if err != nil {
 		log.Println("err=",err)
@@ -51,10 +51,10 @@ func getPolicy (c echo.Context) error {
 	}
 }
 
-func getPoliciesByName (c echo.Context) error {
+func getIntentsByName (c echo.Context) error {
 	name := c.Param("name")
 
-	elems,err := operations.GetPoliciesByName(name)
+	elems,err := operations.GetIntentsByName(name)
 
 	if err != nil {
 		log.Println("err=",err)
@@ -67,7 +67,7 @@ func getPoliciesByName (c echo.Context) error {
 		}
 
 		//Marshall into JSON
-		elems_struct := returnPolicies{ elems_str, len(elems_str) }
+		elems_struct := returnIntents{ elems_str, len(elems_str) }
 	
 		return c.JSON(http.StatusOK, elems_struct)
 	}
@@ -75,79 +75,79 @@ func getPoliciesByName (c echo.Context) error {
 
 
 
-type postPolicyReturn struct {
+type postIntentReturn struct {
 	Itemid        string   `json:"itemid"`
 	Error         string   `json:"error"`
 }
 
-func postPolicy(c echo.Context) error {
-	elem := new(structures.Policy)
+func postIntent(c echo.Context) error {
+	elem := new(structures.Intent)
 
 	if err := c.Bind(elem); err != nil {	
-		clienterr := postPolicyReturn{ "",err.Error() }
+		clienterr := postIntentReturn{ "",err.Error() }
 		return c.JSON(http.StatusBadRequest, clienterr)
 	}
 
-	res,err := operations.AddPolicy(*elem)
+	res,err := operations.AddIntent(*elem)
 
 	if err!=nil {
-		response := postPolicyReturn{ res,err.Error() }
+		response := postIntentReturn{ res,err.Error() }
 		return c.JSON(http.StatusInternalServerError, response)
 	} else {
-		response := postPolicyReturn{ res,"" }
+		response := postIntentReturn{ res,"" }
 		return c.JSON(http.StatusCreated, response)
 	}
 }
 
-func putPolicy(c echo.Context) error {
-	elem := new(structures.Policy)
+func putIntent(c echo.Context) error {
+	elem := new(structures.Intent)
 
 	if err := c.Bind(elem); err != nil {
-		clienterr := postPolicyReturn{ "",err.Error() }
+		clienterr := postIntentReturn{ "",err.Error() }
 		return c.JSON(http.StatusBadRequest, clienterr)
 	}
 
-	if _,err:= operations.GetPolicyByItemID(elem.ItemID); err != nil {
-		response := postPolicyReturn{ "",err.Error() }
+	if _,err:= operations.GetIntentByItemID(elem.ItemID); err != nil {
+		response := postIntentReturn{ "",err.Error() }
 		return c.JSON(http.StatusNotFound, response)
 	}
 
 
 	log.Println("adding elemenet")
-	err := operations.UpdatePolicy(*elem)
+	err := operations.UpdateIntent(*elem)
 	log.Println("creating response ",elem.ItemID,err)	
 
 	if err!=nil {
 		log.Println("err=",elem.ItemID)
 
-		response := postPolicyReturn{ elem.ItemID,err.Error() }
+		response := postIntentReturn{ elem.ItemID,err.Error() }
 		return c.JSON(http.StatusInternalServerError, response)
 	} else {
 		log.Println("res=",elem.ItemID)
-		response := postPolicyReturn{ elem.ItemID,"" }
+		response := postIntentReturn{ elem.ItemID,"" }
 		return c.JSON(http.StatusCreated, response)
 	}
 }
 
 
 
-func deletePolicy (c echo.Context) error {
+func deleteIntent (c echo.Context) error {
 	itemid := c.Param("itemid")
 
 	log.Println("got here ",itemid)
-	elem,err := operations.GetPolicyByItemID(itemid)
+	elem,err := operations.GetIntentByItemID(itemid)
 	log.Println("Elem is ",elem)
 
 	if err != nil {
-		response := postPolicyReturn{ elem.ItemID,err.Error() }
+		response := postIntentReturn{ elem.ItemID,err.Error() }
 		return c.JSON(http.StatusInternalServerError, response)
 	} else {
-		err = operations.DeletePolicy(itemid)
+		err = operations.DeleteIntent(itemid)
 		if err != nil {
-			response := postPolicyReturn{ itemid,err.Error() }
+			response := postIntentReturn{ itemid,err.Error() }
 			return c.JSON(http.StatusInternalServerError, response)
 		} else {
-			response := postPolicyReturn{ itemid,"" }			
+			response := postIntentReturn{ itemid,"" }			
 			return c.JSON(http.StatusOK, response)
 		}
 	}

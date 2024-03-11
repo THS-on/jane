@@ -50,10 +50,10 @@ func getEV(claim structures.Claim, rule structures.Rule) (structures.ExpectedVal
 
 	if rule.NeedsEV == true {
 		e := claim.Header.Element.ItemID
-		p := claim.Header.Policy.ItemID
+		p := claim.Header.Intent.ItemID
 		
 		fmt.Println("    e = %v",claim.Header.Element.ItemID)
-		fmt.Println("    p = %v",claim.Header.Policy.ItemID)
+		fmt.Println("    p = %v",claim.Header.Intent.ItemID)
 		
 		ev,err := GetExpectedValueByElementAndPolicy(e,p)
 
@@ -92,7 +92,7 @@ func Verify(claim structures.Claim, rule structures.Rule, session structures.Ses
 			fmt.Println("dealing with the ev")
 	
 			returnedRV = structures.MissingExpectedValue
-			returnedMSG = fmt.Sprintf("Rule %v requries an expected value for e,p pair %v and %v and one was not found: %w",rule.Name,claim.Header.Element.ItemID,claim.Header.Policy.ItemID,err.Error())
+			returnedMSG = fmt.Sprintf("Rule %v requries an expected value for e,p pair %v and %v and one was not found: %w",rule.Name,claim.Header.Element.ItemID,claim.Header.Intent.ItemID,err.Error())
 		} else {
 
 			// Now

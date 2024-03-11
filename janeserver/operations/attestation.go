@@ -18,7 +18,7 @@ type hashablePartClaim struct {
 //This function calls the attestation mechanism that eventually calls the TA on some client
 // ItemIDs for Element, Policy and String are provided in eid, pid and sid
 // A map of additional parameters in aps
-func Attest(element structures.Element, policy structures.Policy, session structures.Session, aps map[string]interface{}) (string, error) {
+func Attest(element structures.Element, policy structures.Intent, session structures.Session, aps map[string]interface{}) (string, error) {
 
 	var body map[string]interface{} =  make(map[string]interface{})
 

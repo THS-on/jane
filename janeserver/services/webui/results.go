@@ -36,7 +36,7 @@ func showResults(c echo.Context) error {
 	for _,j := range rs {
 		ev,_ := operations.GetExpectedValueByItemID(j.ExpectedValue.ItemID)
 		e,_ := operations.GetElementByItemID(ev.ElementID)		
-		p,_ := operations.GetPolicyByItemID(ev.PolicyID)		
+		p,_ := operations.GetIntentByItemID(ev.IntentID)		
 
 		rsstr = append( rsstr, resultsstr{ j.ItemID, j.RuleName,j.VerifiedAt,j.Result,e.Name,e.ItemID,p.Name,p.ItemID,ev.Name,ev.ItemID,j.ClaimID,j.Session.ItemID,j.Message,j.Footer  } )
 	}
@@ -56,7 +56,7 @@ func showResult(c echo.Context) error {
 
 	ev,_ := operations.GetExpectedValueByItemID(r.ExpectedValue.ItemID)
 	e,_ := operations.GetElementByItemID(ev.ElementID)		
-	p,_ := operations.GetPolicyByItemID(ev.PolicyID)	
+	p,_ := operations.GetIntentByItemID(ev.IntentID)	
 
 	rsstr := resultsstr{ r.ItemID, r.RuleName, r.VerifiedAt, r.Result,e.Name,e.ItemID,p.Name,p.ItemID,ev.Name,ev.ItemID,r.ClaimID,r.Session.ItemID,r.Message,r.Footer  }
 	rsstrext := resultsstrext{ rsstr }

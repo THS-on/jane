@@ -25,14 +25,14 @@ func Registration() structures.Protocol {
 // It returns a "json" structure and a string with the body type.
 // If requestFromTA returns and error, then it is encoded here and returned.
 // The body type is *ERROR in these situations and the body should have a field "error": <some value>
-func Call(e structures.Element, p structures.Policy, s structures.Session, aps map[string]interface{}) (map[string]interface{}, map[string]interface{}, string) {
+func Call(e structures.Element, p structures.Intent, s structures.Session, aps map[string]interface{}) (map[string]interface{}, map[string]interface{}, string) {
 	rtn, ips, err := requestFromTA(e, p, s, aps)
 
 	if err != nil {
 		rtn["error"] = err.Error()
 		return rtn, ips, structures.CLAIMERROR
 	} else {
-		return rtn, ips, p.Intent
+		return rtn, ips, p.Function
 	}
 }
 
@@ -49,7 +49,7 @@ func mergeMaps(m1 map[string]interface{}, m2 map[string]interface{}) map[string]
 
 // This function performs the actual interaction with the TA
 // This will be highly specific to the actual protocol and its implemented intents
-func requestFromTA(e structures.Element, p structures.Policy, s structures.Session, aps map[string]interface{}) (map[string]interface{}, map[string]interface{}, error) {
+func requestFromTA(e structures.Element, p structures.Intent, s structures.Session, aps map[string]interface{}) (map[string]interface{}, map[string]interface{}, error) {
 
 	var empty map[string]interface{} = make(map[string]interface{}) // this is an  *instantiated* empty map used for error situations
 	var bodymap map[string]interface{}                              // this is used to store the result of the final unmarshalling  of the body received from the TA
@@ -68,11 +68,11 @@ func requestFromTA(e structures.Element, p structures.Policy, s structures.Sessi
 	// always supply which device to use
 
 	// for specific intents for the a10httprestv2
-	if p.Intent == "tpm2/pcrs" {
+	if p.Function == "tpm2/pcrs" {
 		ips["tpm2/device"] = (e.TPM2).Device
 	}
 
-	if p.Intent == "tpm2/quote" {
+	if p.Function == "tpm2/quote" {
 		ips["tpm2/device"] = (e.TPM2).Device
 		ips["tpm2/akhandle"] = (e.TPM2).AK.Handle
 		nce := make([]byte, nonceSize)
@@ -80,15 +80,15 @@ func requestFromTA(e structures.Element, p structures.Policy, s structures.Sessi
 		ips["tpm2/nonce"] = nce
 	}
 
-	if p.Intent == "uefi/eventlog" {
+	if p.Function == "uefi/eventlog" {
 		ips["uefi/eventlog"] = (e.UEFI).Eventlog
 	}
 
-	if p.Intent == "ima/asciilog" {
+	if p.Function == "ima/asciilog" {
 		ips["ima/ASCIIlog"] = (e.IMA).ASCIILog
 	}
 
-	if p.Intent == "txt/log" {
+	if p.Function == "txt/log" {
 		ips["ima/log"] = (e.TXT).Log
 	}
 
@@ -104,7 +104,7 @@ func requestFromTA(e structures.Element, p structures.Policy, s structures.Sessi
 		return empty, cps, fmt.Errorf("JSON Marshalling failed: %w", err)
 	}
 
-	url := e.Endpoint + "/" + p.Intent
+	url := e.Endpoint + "/" + p.Function
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(postbody))
 	req.Header.Set("Content-Type", "application/json")
 	client := &http.Client{}
@@ -131,7 +131,7 @@ func requestFromTA(e structures.Element, p structures.Policy, s structures.Sessi
 		return bodymap, cps, fmt.Errorf("TA reports error %v with response %v", resp.Status, taResponse)
 	}
 
-	if p.Intent == "tpm2/quote" {
+	if p.Function == "tpm2/quote" {
 		quoteValue, ok := bodymap["quote"]
 		if !ok {
 			return bodymap, cps, fmt.Errorf("missing quote data in response")

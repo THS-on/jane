@@ -26,9 +26,9 @@
       </div>
 
       <div class="col-md-4">
-         <label for="policyid"><b>Policies</b> <i>select one</i></label>
+         <label for="intentid"><b>Intents</b> <i>select one</i></label>
 
-           <select class="form-select" size="10" id="policyid" name="pid">
+           <select class="form-select" size="10" id="intentid" name="pid">
             {{ range .PS }}
                <option value="{{ .ItemID }}">{{ .Name }} <span class="badge bg-secondary">{{ .Intent }}</span></option>
             {{ end }}
@@ -69,8 +69,8 @@
       </div>
 
       <div class="col-md-4">
-         <label for="policyparameters"><b>Policy Parameters (JSON)</b></label>
-         <textarea class="form-control" rows="5" id="policyparameters" name="pps"></textarea>
+         <label for="intentparameters"><b>Intent Parameters (JSON)</b></label>
+         <textarea class="form-control" rows="5" id="intentparameters" name="pps"></textarea>
       </div>
 
       <div class="col-md-4">

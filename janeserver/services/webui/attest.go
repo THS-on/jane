@@ -13,16 +13,16 @@ import(
 
 type atteststr struct {
 	ES    []structures.Element
-	PS    []structures.Policy
+	IS    []structures.Intent
 	RS    []structures.Rule
 }
 
 func showAttest(c echo.Context) error {
 	es,_ := operations.GetElementsAll()
-	ps,_ := operations.GetPoliciesAll()
+	is,_ := operations.GetIntentsAll()
 	rs:= operations.GetRules()
 
-	as := atteststr{ es,ps,rs }
+	as := atteststr{ es,is,rs }
 
 	return c.Render(http.StatusOK, "attest.html",as)
 }
@@ -56,7 +56,7 @@ func processAttest(c echo.Context) error {
 	fmt.Printf("ATTREQ %v\n",attreq)
 	// Get the objects
 	e,_ := operations.GetElementByItemID(attreq.Eid)
-	p,_ := operations.GetPolicyByItemID(attreq.Pid)
+	p,_ := operations.GetIntentByItemID(attreq.Pid)
 
 	// Open a session
 	sid,_ := operations.OpenSession(attreq.Msg)

@@ -16,13 +16,13 @@ func Registration() (structures.Protocol) {
 	return structures.Protocol{"A10NULLPROTOCOL","Testing protocol, always returns a test claim",Call, intents}
 }
 
-func Call(e structures.Element, p structures.Policy, s structures.Session, cps map[string]interface{}) (map[string]interface{}, map[string]interface{}, string) {
+func Call(e structures.Element, p structures.Intent, s structures.Session, cps map[string]interface{}) (map[string]interface{}, map[string]interface{}, string) {
 
 	// Create a test body
 
 	rtn := map[string]interface{}{
 		 "foo":"bar",
-		 "calling": fmt.Sprintf("with protocol %v I would send an intent to %v",e.Protocol,p.Intent),
+		 "calling": fmt.Sprintf("with protocol %v I would send an intent to %v",e.Protocol,p.Function),
 		 "aNumber": 42,
 	}
 	
@@ -38,7 +38,7 @@ func Call(e structures.Element, p structures.Policy, s structures.Session, cps m
 	//
 	// Claim bodytype should be set to error and a ClaimError structure returned in an error field
 
-	if p.Intent=="null/null" {
+	if p.Function=="null/null" {
 		log.Println(" null call worked ")
 		rtn["worked"] = true
 		return rtn,ips,"null/test"
