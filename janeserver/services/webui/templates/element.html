@@ -78,7 +78,7 @@
           {{end}} 
         <td><a href="/claim/{{ .ItemID }}">{{ .BodyType }}</a></td>
       <td>{{ epochToUTC .Header.Timing.Requested }}</td>
-      <td>{{ .Header.Policy.Name }}</td>
+      <td>{{ .Header.Intent.Name }}</td>
       <td><a href=/session/{{ .Header.Session.ItemID }}>S</a></td>
       {{end}}
    </tr>

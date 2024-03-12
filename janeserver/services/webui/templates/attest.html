@@ -29,8 +29,8 @@
          <label for="intentid"><b>Intents</b> <i>select one</i></label>
 
            <select class="form-select" size="10" id="intentid" name="pid">
-            {{ range .PS }}
-               <option value="{{ .ItemID }}">{{ .Name }} <span class="badge bg-secondary">{{ .Intent }}</span></option>
+            {{ range .IS }}
+               <option value="{{ .ItemID }}">{{ .Name }} <span class="badge bg-secondary">{{ .Function }}</span></option>
             {{ end }}
          </select>
       </div>

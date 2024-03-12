@@ -14,7 +14,7 @@
       <tr><td scope="col">ItemID</th> <td scope="col">{{ .EV.ItemID }}</th> </tr>     
 
       <tr><td scope="col">Element</th> <td scope="col"><a href="/element/{{ .E.ItemID }}">{{ .E.Name }} </a>@ {{ .E.Endpoint }} <span class="badge bg-secondary"> {{ .E.Protocol }}</span></th> </tr>     
-      <tr><td scope="col">Intent</th> <td scope="col"><a href="/intent/{{ .P.ItemID }}">{{ .P.Name }}  </a> <span class="badge bg-secondary">{{ .P.Intent }}</span></th> </tr>     
+      <tr><td scope="col">Intent</th> <td scope="col"><a href="/intent/{{ .I.ItemID }}">{{ .I.Name }}  </a> <span class="badge bg-secondary">{{ .I.Function }}</span></th> </tr>     
       
       <tr><td scope="col">EVS Parameters</th> <td scope="col">{{ template "genericList.html" .EV.EVS }}</th> </tr>     
 

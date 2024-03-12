@@ -126,7 +126,7 @@ func GetExpectedValuesByPolicy(name string) ([]structures.ExpectedValue, error) 
         var elems []structures.ExpectedValue
 
         // discard the error, the dbcursor.All will deal with that case
-        filter := bson.D{ {"policyid", name} }
+        filter := bson.D{ {"intentid", name} }
         dbcursor,_ := datalayer.DB.Collection("expectedvalues").Find(context.TODO(), filter)
         dbcursorerror := dbcursor.All(context.TODO(),&elems)
 
@@ -146,7 +146,7 @@ func GetExpectedValuesByElement(name string) ([]structures.ExpectedValue, error)
         return elems, dbcursorerror
 }
 
-// GetExpectedValueByElementAndPolicy returns all ExpectedValues with the given eid and policyid
+// GetExpectedValueByElementAndPolicy returns all ExpectedValues with the given eid and intentid
 // This should return ONLY ONE EV ... if there are more with the same eid,pid then it is whatever
 // mongo returns to you ... no checking, you are on your own but you were warned NOT to have more
 // than one eid,pid pair for an EV, so it is your fault.
@@ -159,7 +159,7 @@ func GetExpectedValueByElementAndPolicy(eid string, pid string) (structures.Expe
                 {"$and",
                         bson.A{
                                 bson.D{{"elementid", eid}},
-                                bson.D{{"policyid", pid}},
+                                bson.D{{"intentid", pid}},
                               },
                         },
          }

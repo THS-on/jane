@@ -13,7 +13,7 @@ type Claim struct {
 
 type ClaimHeader struct {
         Element Element                                 `json:"element",bson:"element"`
-        Intent Intent                                   `json:"intent",bson:"policy"`
+        Intent Intent                                   `json:"intent",bson:"intent"`
         Session Session                                 `json:"session",bson:"session"`
         Timing Timing                                   `json:"timing",bson:"timing"`
         AdditionalParameters map[string]interface{}     `json:"aps",bson:"aps"`
