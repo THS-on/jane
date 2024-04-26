@@ -1,5 +1,4 @@
-// Attestation Engine A10
-// Golang version v0.1
+// Attestation Engine A10 JANE, Febrary 2024 onwards.
 // The main package starts the various interfaces: REST, MQTT and links to the database system
 package main
 
@@ -15,6 +14,7 @@ import (
 	"a10/protocols"
 	"a10/rules"
 	"a10/utilities"
+	"a10/operations"
 
 	"a10/services/restapi"
 	"a10/services/webui"
@@ -23,7 +23,7 @@ import (
 )
 
 // Version number
-const VERSION string = "v1.0rc1"
+const VERSION string = "v1.01 JANE"
 
 // the BUILD value can be set during compilation.
 var BUILD string = "not set"
@@ -77,7 +77,8 @@ func main() {
 
 	protocols.RegisterProtocols()
 	rules.RegisterRules()
-
+	operations.LoadStandardIntents()
+	
 	// and if this has gone well...
 
 	msg = fmt.Sprintf("DB,MQTT,Rules initialised. Starting services: web %v, rest %v, x3720 %v", *flagWEB, *flagREST, *flagX3270)

@@ -31,6 +31,14 @@ You will now get a file called `janeserver` which is your executable.
 
 If you wish to reduce the size of the binary, run `strip janeserver`
 
+### Optional BUILD flag
+
+If you wish to set a build flag, then specify  as part of the `ldflags -X` option as in the example command to compile below. Set the value `123` to whatever you want (within reason - a short string is fine). If you don't do this, and it is completely optional, then default value for the build flag will be `not set`.
+
+```bash
+. /opt/edgelessrt/share/openenclave/openenclaverc && GOOS=linux GOARCH=amd64 go build -ldflags="-X 'main.BUILD=123'" -o janeserver
+```
+
 ## Compiling TA10
 
 *MAKE SURE* you are in the `ta10` directory.  TA10 is much simpler than ga10 and requires just compilation. For your local operating system and architecture you can remove the `GOOS` and `GOARCH` variables, for example as shown below. The `strip` command is optional but it does reduce the binary size a little.
@@ -48,12 +56,12 @@ For other architectures, use `go tool dist list` for a list of operating system 
 GOOS=linux GOARCH=arm go build -o ta10_arm                 # eg: Pi 3s
 GOOS=linux GOARCH=arm64 go build -o ta10_arm64             # eg: Pi 4, 5s in 64-bit mode (also 3's I think)
 GOOS=windows GOARCH=amd64 go build -o ta10_win             # eg: Pretty much every Win10, Win11 machine
-GOOS=plan9 GOARCH=386 go build -o ta10_belllabs            # Because we're Bell Labs....
+GOOS=plan9 GOARCH=386 go build -o ta10_belllabs            # Because I was in Bell Labs and plan9 was freaking cool! The real Unix next!
 GOOS=linux GOARCH=s390x go build -o ta10_mainframe         # Because you either have an z-Series in the basement or Hercules
 GOOS=solaris GOARCH=amd64 go build -o ta10_solaris         # I still mourn the lost of the SparcStation and UltraSparcs, RIP Sun.
-GOOS=opebsd GOARCH=amd64 go build -o ta10_openbsd          # BSD for security
-GOOS=freebsd GOARCH=amd64 go build -o ta10_freeebsd        # More BSD fun
+GOOS=opebsd GOARCH=amd64 go build -o ta10_openbsd          # BSD for security (netbsd and freebsd are supported too)
 GOOS=darmin GOARCH=arm64 go build -o ta10_mac              # For the Apple people out there...no TPM, but if you figure out attesting a T2 let me know
-GOOS=aix GOARCH=ppc64 go build -o ta10_aix                 # If you have an AIX box, let me know...DRTM is supported during boot and a TPM too?
+GOOS=aix GOARCH=ppc64 go build -o ta10_aix                 # If you have an AIX box, again let me know...DRTM is supported during boot and a TPM too?
+GOOS=wasip1 GOARCH=wasm go build -o ta10_aix                # Web Assembly works too...never tried this myself, so I wonder how it works
 ```
 
