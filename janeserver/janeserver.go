@@ -14,7 +14,6 @@ import (
 	"a10/protocols"
 	"a10/rules"
 	"a10/utilities"
-	"a10/operations"
 
 	"a10/services/restapi"
 	"a10/services/webui"
@@ -77,8 +76,7 @@ func main() {
 
 	protocols.RegisterProtocols()
 	rules.RegisterRules()
-	operations.LoadStandardIntents()
-	
+
 	// and if this has gone well...
 
 	msg = fmt.Sprintf("DB,MQTT,Rules initialised. Starting services: web %v, rest %v, x3720 %v", *flagWEB, *flagREST, *flagX3270)
