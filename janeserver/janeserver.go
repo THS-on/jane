@@ -1,5 +1,4 @@
-// Attestation Engine A10
-// Golang version v0.1
+// Attestation Engine A10 JANE, Febrary 2024 onwards.
 // The main package starts the various interfaces: REST, MQTT and links to the database system
 package main
 
@@ -23,7 +22,7 @@ import (
 )
 
 // Version number
-const VERSION string = "v1.0rc1"
+const VERSION string = "v1.01 JANE"
 
 // the BUILD value can be set during compilation.
 var BUILD string = "not set"
