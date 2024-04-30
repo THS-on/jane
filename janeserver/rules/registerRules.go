@@ -9,6 +9,7 @@ import (
 	"a10/rules/nullrule"
 	"a10/rules/sysrules"
 	"a10/rules/tpm2rules"
+	"a10/rules/veraison"
 
 	"a10/rules/testcontainerrules"
 )
@@ -20,6 +21,8 @@ func RegisterRules() {
 	registerListOfRules(testcontainerrules.Registration())
 	registerListOfRules(sysrules.Registration())
 	registerListOfRules(keylime.Registration())
+	registerListOfRules(veraison.Registration())
+
 }
 
 func registerListOfRules(rs []structures.Rule) {

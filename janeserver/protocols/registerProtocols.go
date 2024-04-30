@@ -8,6 +8,8 @@ import (
 	"a10/protocols/netconfprotocol"
 	"a10/protocols/nullprotocol"
 	"a10/protocols/testcontainerprotocol"
+	"a10/protocols/veraisonpsaprotocol"
+
 )
 
 func RegisterProtocols() {
@@ -16,4 +18,6 @@ func RegisterProtocols() {
 	operations.AddProtocol(netconfprotocol.Registration())
 	operations.AddProtocol(marblerun.Registration())
 	operations.AddProtocol(testcontainerprotocol.Registration())
+	operations.AddProtocol(veraisonpsaprotocol.Registration())
+	
 }
