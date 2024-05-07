@@ -141,7 +141,7 @@ type homepageData struct {
 }
 
 func homepage(c echo.Context) error {
-	h := homepageData{ "Nokia Attestation Engine", "Croeso, Tervetuola, Welcome", PREFIX }
+	h := homepageData{ "Jane", "Croeso, Tervetuola, Welcome", PREFIX }
 	return c.JSON(http.StatusOK, h)
 }
 

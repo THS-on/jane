@@ -1,8 +1,6 @@
 # Welcome
 
-Welcome to the Nokia Attestation Engine. See the README.md for more information and INSTALL.md here in the root directory for how to install using docker. In the u10 and a10rest directories you'll find the README.md files there on how to start the components without docker.
-
-In the A10 directory you'll find the installation instructions for building the python libraries and how to deploy these locally.
+Welcome to Jane. See the README.md for more information.
 
 # Submitting Changes
 
