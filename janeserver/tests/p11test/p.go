@@ -13,7 +13,8 @@ import(
 func main() {
 	fmt.Println("Starting")
 
-	module,_ := p11.OpenModule("/usr/lib/x86_64-linux-gnu/pkcs11/yubihsm_pkcs11.so")
+	//module,_ := p11.OpenModule("/usr/lib/x86_64-linux-gnu/pkcs11/yubihsm_pkcs11.so")
+	module,_ := p11.OpenModule("/usr/lib/x86_64-linux-gnu/pkcs11/gnome-keyring-pkcs11.so")
 	//module,_ := p11.OpenModule("/usr/local/lib/softhsm/libsofthsm2.so")
 
 	
