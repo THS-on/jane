@@ -4,6 +4,8 @@ This section contains a list of publications and presentations where this attest
 
 ## Conference and Journals
 
+   * Henri Heinonen, Ian Oliver. "A Proposal to use Oracles for Remote Attestation of Digital Twins: A Medical Example" In: Proceedings of IEEE Blockchain 2024. August 19-22. Copenhagen, Denmark (to appear)
+   * Kaisa Jatkola, Ian Oliver. "Exploring Blockchain Based Digital Twins with Remote Attestation". In: Proceedings of the Eurosis 37th European Simulation and Modelling Conference ESM 2023. Toulouse. France
    * Ian Oliver, Amir Dirin, and Teemu H. Laine. “A Security Framework for Increasing Data and Device Integrity in Internet of Things Systems”. In: Sensors. Vol. 23. 17. MDPI, Aug. 2023
    * Ronny Bäackman, Ian Oliver, and Gabriela Limonta. “Integrity checking of railway interlocking firmware”. In: Computer Safety, Reliability,and Security. SAFECOMP 2020 Workshops: DECSoS 2020, DepDevOps2020, USDAI 2020, and WAISE 2020, Lisbon, Portugal, September 15,2020, Proceedings 39. Springer International Publishing. 2020, pp. 161–175.
    * Ian Oliver. “An approach to combining medical device fault analysis withntrusted computing forensics”. In: 2020 IEEE International Conference onnBig Data (Big Data). IEEE. 2020, pp. 1831–1837.
@@ -17,7 +19,6 @@ This section contains a list of publications and presentations where this attest
    * Ian Oliver et al. “Modelling nfv concepts with ontologies”. In: 2018 21st Conference on Innovation in Clouds, Internet and Networks and Work- shops (ICIN). IEEE. 2018, pp. 1–7
    * Shankar Lal et al. “Securing VNF communication in NFVI”. In: 2017 IEEE Conference on Standards for Communications and Networking (CSCN). IEEE. 2017, pp. 187–192.
    * Aapo Kalliola et al. “Testbed for security orchestration in a network function virtualization environment”. In: 2017 IEEE Conference on Network Function Virtualization and Software Defined Networks (NFV-SDN). IEEE. 2017, pp. 1–4.
-
    * Sowmya Ravidas et al. “Incorporating trust in NFV: Addressing the challenges”. In: 2017 20th Conference on Innovations in Clouds, Internet and Networks (ICIN). IEEE. 2017, pp. 87–91.
    * Leo Hippelainen, Ian Oliver, and Shankar Lal. “Towards dependably detecting geolocation of cloud servers”. In: Network and System Secu- rity: 11th International Conference, NSS 2017, Helsinki, Finland, August 21–23, 2017, Proceedings 11. Springer International Publishing. 2017, pp. 643–656.
    * Ian Oliver et al. “Experiences in trusted cloud computing”. In: Network and System Security: 11th International Conference, NSS 2017, Helsinki, Finland, August 21–23, 2017, Proceedings 11. Springer International Publishing. 2017, pp. 19–30.
@@ -27,13 +28,16 @@ This section contains a list of publications and presentations where this attest
 
 ## Theses
 
-   * Ekblom, M., 2015. Applications of Homomorphic Encryption, Aalto University, Finland (MSc thesis).
-   * Lal, S., 2015. Privacy Preserving Log File Processing in Mobile Network Environment Aalto University(Master’s thesis).
-   * Ravidas, S. 2016. Incorporating Trust in Network Function Virtualization. Aalto University. Finland (MSc thesis).
-   * Panda, S., 2018. Modelling Telecommunications Operators and Adversaries using Game Theory. Aalto University. Finland (MSc thesis)
-   * Vigmostad, B., 2018. Enhancing trust and resource allocation in telecommunications cloud. Aalto University. Finland (MSc thesis).
-   * Limonta Marquez, G., 2018. Using remote attestation of trust for computer forensics. Aalto University. Finland (MSc thesis).
-   * Bäckman, R. 2020. Simulating Rail Traffic Management with Trusted Computing. South-Eastern Finland Univerity of Applied Sciences (XAMK) (BSc Thesis)
-   * Turcanu, V., 2021. Providing Trusted Computing Services for Multiaccess Edge Cloud Computing. Aalto University. Finland (MSc thesis).
-   * Risto, R, 2023. Forensics from trusted computing and remote attestation. University of Oulu . Finland (MSc thesis).
+   * Kuure. P, 2023. Security and Trust in Open RAN. South-Eastern Finland University of Applied Sciences (XAMK). (MSc Thesis)
+   * Sommer, T. 2023. Confidential Computing and Remote Attestation in the Context of Telecommunications Infrastructure. Kiel University (MSc Thesis)
    * Jatkola, K. 2023. Attestation and Blockchain for Medical Digital Twins. University of Lappenranta, Finland, (MSc Thesis)
+   * Sunden. P. 2023. Applying ElasticSearch for Remote Attestation Data Analysis in Digital Forensics. University of Oulu. Finland (MSc thesis).
+   * Risto, R, 2023. Forensics from trusted computing and remote attestation. University of Oulu. Finland (MSc thesis).
+   * Turcanu, V., 2021. Providing Trusted Computing Services for Multiaccess Edge Cloud Computing. Aalto University. Finland (MSc thesis).
+   * Bäckman, R. 2020. Simulating Rail Traffic Management with Trusted Computing. South-Eastern Finland Univerity of Applied Sciences (XAMK) (BSc Thesis)
+   * Limonta Marquez, G., 2018. Using remote attestation of trust for computer forensics. Aalto University. Finland (MSc thesis).
+   * Vigmostad, B., 2018. Enhancing trust and resource allocation in telecommunications cloud. Aalto University. Finland (MSc thesis).
+   * Panda, S., 2018. Modelling Telecommunications Operators and Adversaries using Game Theory. Aalto University. Finland (MSc thesis)
+   * Ravidas, S. 2016. Incorporating Trust in Network Function Virtualization. Aalto University. Finland (MSc thesis).
+   * Lal, S., 2015. Privacy Preserving Log File Processing in Mobile Network Environment Aalto University(Master’s thesis).
+   * Ekblom, M., 2015. Applications of Homomorphic Encryption, Aalto University, Finland (MSc thesis).
