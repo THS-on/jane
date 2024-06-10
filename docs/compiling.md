@@ -4,7 +4,24 @@ Ensure that Go is installed and correctly configured. You will also need the Int
 
 The instructions presented here have been tested in Ubuntu 22.04 om AMD64.
 
-## Install SGX SDK and Edgeless
+- [Compiling](#compiling)
+   * [Compiling JANESERVER](#compiling-janeserver)
+      + [Install SGX SDK and Edgeless libraries](#install-sgx-sdk-and-edgeless-libraries)
+      + [Building ](#building)
+      + [Optional BUILD flag](#optional-build-flag)
+   * [Compiling TA10](#compiling-ta10)
+
+
+<!-- TOC --><a name="compiling"></a>
+
+
+<!-- TOC --><a name="compiling-janeserver"></a>
+## Compiling JANESERVER
+
+Compilation requires an up-to-date mod file and the Edgeless environment variables - this is explained in the two parts below. Fortunately, unless Intel or Edgeless update their stuff you only have to install these once. The biggest issue is that these libraries are amd64 instruction set specific.
+
+<!-- TOC --><a name="install-sgx-sdk-and-edgeless-libraries"></a>
+### Install SGX SDK and Edgeless libraries
 
 Intel and Edgeless supply releases for Ubuntu and other operating systems. Here we should for Ubuntu Jammy (22.04). These commands might need to be run as `sudo`. Modify as appropriate for your operating system.
 
@@ -17,9 +34,10 @@ wget https://github.com/edgelesssys/edgelessrt/releases/download/v0.4.1/edgeless
 apt-get install -y ./$ERT_DEB build-essential cmake libssl-dev libsgx-dcap-default-qpl libsgx-dcap-ql libsgx-dcap-quote-verify
 ```
 
-## Compiling JANESERVER
+<!-- TOC --><a name="building"></a>
+### Building 
 
-Compilation requires an up-to-date mod file and the Edgeless environment variables - which should be installed if the above went correctly. *MAKE SURE* you are in the `janeserver` directory when you run these commands:
+Once SGX and Edgeless have been installed then you can just run this part every time you need to recompile. *MAKE SURE* you are in the `janeserver` directory when you run these commands:
 
 ```bash
 go get -u
@@ -31,6 +49,7 @@ You will now get a file called `janeserver` which is your executable.
 
 If you wish to reduce the size of the binary, run `strip janeserver`
 
+<!-- TOC --><a name="optional-build-flag"></a>
 ### Optional BUILD flag
 
 If you wish to set a build flag, then specify  as part of the `ldflags -X` option as in the example command to compile below. Set the value `123` to whatever you want (within reason - a short string is fine). If you don't do this, and it is completely optional, then default value for the build flag will be `not set`.
@@ -39,6 +58,7 @@ If you wish to set a build flag, then specify  as part of the `ldflags -X` optio
 . /opt/edgelessrt/share/openenclave/openenclaverc && GOOS=linux GOARCH=amd64 go build -ldflags="-X 'main.BUILD=123'" -o janeserver
 ```
 
+<!-- TOC --><a name="compiling-ta10"></a>
 ## Compiling TA10
 
 *MAKE SURE* you are in the `ta10` directory.  TA10 is much simpler than ga10 and requires just compilation. For your local operating system and architecture you can remove the `GOOS` and `GOARCH` variables, for example as shown below. The `strip` command is optional but it does reduce the binary size a little.

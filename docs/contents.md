@@ -5,17 +5,21 @@
    * [Compiling](compiling.md)
    * [Running](running.md)
    * [Automatic Startup](automaticStartup.md)
-   * [Security and Running in a Producton Environment](security.md)
+   * [Security and Running in a Production Environment](security.md)
 
 ## Getting Started
 
    * Creating an element
-   * Attesting and Verification
+   * Loading the standard intents
+   * Your first attestation
+   * Creating and expected value
+   * Verification
+   * More attestation and verification
 
 ## Structures
 
    * [Elements](elements.md)
-   * Policies
+   * Intents
    * Expected Values
    * Claims
    * Results
@@ -28,14 +32,13 @@
 ## Protocols and Trust Agents
 
    * Protocols
-   * Intents
    * Trust Agents and Endpoints
 
 ## Verification and Rules
 
    * Rules
 
-## Appendicits
+## Appendicies
 
    * [History](history.md)
    * [Publications](publications.md)   
