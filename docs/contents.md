@@ -19,8 +19,9 @@
 ## Structures
 
    * [Elements](elements.md)
-   * Intents
-   * Expected Values
+   * [Intents](intents.md)
+      * [Standard Intents](standardintents.md)
+   * [Expected Values](expectedvalues.md)
    * Claims
    * Results
    * Sessions

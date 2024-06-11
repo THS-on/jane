@@ -43,7 +43,7 @@ The definition of the element structure can be found at https://gitlab.jyu.fi/ij
 
 ## Standard Intents
 
-The file https://gitlab.jyu.fi/ijoliver/jane/-/blob/main/etc/standardintents.json contains a standard list of common intents that can be loaded into Jane. These intents use a fixed `itemid` field so should be consistent across all installations.
+The file https://gitlab.jyu.fi/ijoliver/jane/-/blob/main/etc/standardintents.json contains a standard list of common intents that can be loaded into Jane. These intents use a fixed `itemid` field so should be consistent across all installations. Further discussion of these is made here [Standard Intents](standardintents.md).
 
 Jane contains a function in the UI to reload these on demand, hence the use of the standard itemid. The file is loaded from the above source.
 
