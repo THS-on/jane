@@ -142,25 +142,27 @@ func ParseTPMKey(bytes []byte) (crypto.PublicKey, error) {
 			return nil, fmt.Errorf("failed to construct RSA key")
 		}
 		return akRsa, nil
-    // FIXME: Thore will fix this
-    // ECCPub no longer exists in the tpm2 libraries
-	// case tpm2.TPMAlgECC:
-	// 	tpmEcc, err := public.Unique.ECC()
-	// 	if err != nil {
-	// 		return nil, fmt.Errorf("failed to convert to key: %w", err)
-	// 	}
+	case tpm2.TPMAlgECC:
+		tpmEcc, err := public.Unique.ECC()
+		if err != nil {
+			return nil, fmt.Errorf("failed to convert to key: %w", err)
+		}
 
-	// 	keyParams, err := public.Parameters.ECCDetail()
-	// 	if err != nil {
-	// 		return nil, fmt.Errorf("failed to get key params: %w", err)
-	// 	}
+		keyParams, err := public.Parameters.ECCDetail()
+		if err != nil {
+			return nil, fmt.Errorf("failed to get key params: %w", err)
+		}
 
-	// 	// ECCPub no longer exists in the tpm2 libraries
-	// 	akEcc, err := tpm2.ECCPub(keyParams, tpmEcc)
-	// 	if err != nil {
-	// 		return nil, fmt.Errorf("failed to construct RSA key")
-	// 	}
-	// 	return akEcc, nil
+		curve, err := keyParams.CurveID.ECDHCurve()
+		if err != nil {
+			return nil, fmt.Errorf("failed to get ECC curve")
+		}
+
+		akEcc, err := tpm2.ECDHPubKey(curve, tpmEcc)
+		if err != nil {
+			return nil, fmt.Errorf("failed to construct ECC key")
+		}
+		return akEcc, nil
 	default:
 		return nil, fmt.Errorf("unknown key algorithm: %x", public.Type)
 	}
